@@ -1,0 +1,154 @@
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            max-width: 1920px;
+            max-height: 1080px;
+            background-image: url('../image/backgroundoriginal.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        .divideleft {
+            position: absolute;
+            right: 7%;
+            height: 20%;
+            width: 7%;
+            height: 20%;
+            width: 7%;
+        }
+
+        .divideright {
+            position: absolute;
+            right: 7%;
+            height: 20%;
+            width: 7%;
+            height: 20%;
+            width: 7%;
+        }
+
+        .leftRoom {
+
+            position: absolute;
+            left: 7%;
+            top: 50%;
+            height: 20%;
+            width: 7%;
+            background-repeat: no-repeat;
+            background-image: url('../image/left.png');
+            background-size: 100%;
+        }
+
+        .keypad {
+            position: absolute;
+            top: -1px;
+            width: 100%;
+            height: 100%;
+            background-image: url("../image/Keypadback.png");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            display: flex;
+            flex-direction: row;
+
+
+        }
+
+        .key {
+
+            width: 115px;
+            height: 115px;
+
+        }
+
+        .key0 {
+            width: 355px;
+        }
+
+        .keysubmit {
+            position: absolute;
+            height: 475px;
+            left: 57%;
+            top: 35%;
+        }
+
+        .keypadnum {
+            position: absolute;
+            left: 33%;
+            top: 35%;
+        }
+
+        #keypad_input{
+            position: absolute;
+            left: 33%;
+            top: 6%;
+            width: 34%;
+            height: 25%;
+            font-size: 100px ;
+        }
+    </style>
+
+
+    <title>화장실 탈출</title>
+</head>
+
+<body>
+        <tbody>
+            <div class="keypad">
+                <input name="keypad_input" id="keypad_input" type="text" cols="30" rows="10" value="">
+                <div class="keypadnum">
+                    <table>
+                        <tr>
+                            <td><button type="button_1" class="key" onclick="input_text(1)"><img src="../image/001.png"
+                                        width="100px"></button></td>
+                            <td><button type="button_2" class="key" onclick="input_text(2)"><img src="../image/002.png"
+                                        width="100px"></button></td>
+                            <td><button type="button_3" class="key" onclick="input_text(3)"><img src="../image/003.png"
+                                        width="100px">
+                                    </button> </td> </tr> <tr>
+                            <td><button type="button_4" class="key" onclick="input_text(4) "><img src="../image/004.png"
+                                        width="100px">
+                                    </button> </td> <td><button type="button_5" class="key"
+                                            onclick="input_text(5)"><img src="../image/005.png" width="100px">
+                                            </button> </td> <td><button type="button_6" class="key"
+                                                    onclick="input_text(6)"><img src="../image/006.png" width="100px">
+                                                    </button> </td> </tr> <tr>
+                            <td><button type="button_7" class="key" onclick="input_text(7)"><img src="../image/007.png"
+                                        width="100px">
+                                    </button> </td> <td><button type="button_8" class="key"
+                                            onclick="input_text(8)"><img src="../image/008.png" width="100px">
+                                            </button> </td> <td><button type="button_9" class="key"
+                                                    onclick="input_text(9)"><img src="../image/009.png" width="100px">
+                                                    </button> </td> </tr> </table> <td><button type="button_0"
+                                                            class="key0" onclick="input_text(0)"><img src="../image/000.png"
+                                                                width="340px;"></button></td>
+
+                </div>
+                <tr><button type="submit" class="keysubmit" onclick="check_pw()"><img src="../image/sumbit.png"
+                            height="450px;"></button></tr>
+    </div>
+
+    <a href="room-1.html">
+        <div class="leftRoom"></div>
+    </a>
+    </tbody>
+    <script>
+        var pw = 414;
+        function input_text(value) {
+            b = String(document.getElementById('keypad_input').value);
+            document.getElementById('keypad_input').value = b + String(value);
+        }
+        function check_pw(){
+            pw_check = String(document.getElementById('keypad_input').value);
+            if(pw == pw_check){
+                location.href='ending.html';
+            }
+            else{
+                document.getElementById("keypad_input").value='';
+            }
+        }
+    </script>
+</body>
+
+</html>

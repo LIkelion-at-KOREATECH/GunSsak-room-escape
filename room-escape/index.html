@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .leftRoom{
+                
+                position : absolute;
+                left : 1%;
+                top:50%;
+                height : 20%;
+                width: 7%;
+                background-repeat: no-repeat;
+                background-image : url('conversation/left.png');
+                background-size : 100%;
+            }
+
+            .rightRoom{
+                position : absolute;
+                top:50%;
+                right : 1%;
+                height : 20%;
+                width: 7%;
+                background-repeat: no-repeat;
+                background-image : url('conversation/right.png');
+                background-size : 100%;
+            }
+
+            .start{
+                position : absolute;
+                left:40%;
+                top: 60%;
+                margin:0 auto; 
+                width:295px; 
+                height:65px; 
+                line-height:65px; 
+                background:black; 
+                color:#fff; 
+                font-size:18px; 
+                font-weight:bold; 
+                text-align:center; 
+                transition:0.5s all; 
+                overflow:hidden;
+            }
+            .start:hover{
+                transform:scale(1.1);
+            }
+            .start:after{
+                content:'';
+                position: absolute; 
+                top: calc(50% - 50px); 
+                left: -50px;
+                width: 20px; 
+                height: 100px; 
+                background: white; 
+                -webkit-transform: rotate(30deg); 
+                transform:rotate(30deg); 
+                -webkit-transition: all 1000ms cubic-bezier(0.23, 1, 0.32, 1); 
+                transition: all 1000ms cubic-bezier(0.23, 1, 0.32, 1); 
+                opacity: 0;
+            }
+            .start:hover:after {
+                left: calc(100% + 50px);
+                opacity: 1;
+            }
+        </style>
+<script>
+    var num = 1;
+
+    function changePic(idx){
+        if(idx){
+            if(num == 10)
+            return;
+            num++;
+        }
+        else{
+            if(num ==1) return;
+            num--;
+        }
+        if(num == 10){
+                var start = document.getElementById("start");
+                document.all.start.style.visibility="visible";
+        }
+        else{
+            var start = document.getElementById("start");
+                document.all.start.style.visibility="hidden";
+        }
+
+        var imgTag = document.getElementById("photo");
+        imgTag.setAttribute("src","conversation/00" + num + ".png");
+    }
+</script>
+    </head>
+    <body>
+        <div id="galleryCont">
+            <p><img src="conversation/001.png" id ="photo" alt ="이미지" width="100%" height="100%"></p>
+        </div>
+        <p>
+            <div class="leftRoom" onclick="changePic(0);"></div>
+            <div class="rightRoom" onclick="changePic(1);"></div>
+        </p>
+        <p>
+            <div class="start" id = "start" onclick="location.href='room-1.html';" style="visibility:hidden;">start</div>
+        </p>
+    </body>
+</html>
